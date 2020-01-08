@@ -9,7 +9,7 @@ Public mokc_GRPO As New OneKeyCls
 
 
 Sub ma3()
-'1.¼ì²éÔËĞĞÌõ¼şÊÇ·ñÂú×ã£ºa SAP ÊÇ·ñ´ò¿ª£¬b ·şÎñÆ÷ÊÇ·ñÄÜ¹»·ÃÎÊ
+'1.æ£€æŸ¥è¿è¡Œæ¡ä»¶æ˜¯å¦æ»¡è¶³ï¼ša SAP æ˜¯å¦æ‰“å¼€ï¼Œb æœåŠ¡å™¨æ˜¯å¦èƒ½å¤Ÿè®¿é—®
 Dim majjl As New C_AJJL
 Dim mdate As Date
 
@@ -71,8 +71,8 @@ Next
 End Sub
 
 Sub ma1()
-'1.ÅĞ¶ÏSAP ÊÕ»õÒ³ÃæÊÇ·ñ´ò¿ª£¬Èç¹ûÃ»ÓĞ´ò¿ªÔòÖÕÖ¹
-'2.ÖğÌõ Ñ¡Ôñ TOBE_GR µÄ½øĞĞÊÕ»õ£¬²¢½« TOBE_GR ĞŞ¸ÄÎª FINISH
+'1.åˆ¤æ–­SAP æ”¶è´§é¡µé¢æ˜¯å¦æ‰“å¼€ï¼Œå¦‚æœæ²¡æœ‰æ‰“å¼€åˆ™ç»ˆæ­¢
+'2.é€æ¡ é€‰æ‹© TOBE_GR çš„è¿›è¡Œæ”¶è´§ï¼Œå¹¶å°† TOBE_GR ä¿®æ”¹ä¸º FINISH
 Dim xx As Integer
 Dim yy As Integer
 Dim mfso As New CFSO
@@ -117,7 +117,7 @@ End If
 Dim ws As Worksheet
 Set ws = Workbooks(THIS_WB_NAME).Worksheets("GRPO_DATA")
 
-'¸ø°´¼ü¾«Áé¸³ÖµÍ¼Æ¬£¬check_ok ,post, prpo
+'ç»™æŒ‰é”®ç²¾çµèµ‹å€¼å›¾ç‰‡ï¼Œcheck_ok ,post, prpo
 Dim usname As String
 usname = Environ("Computername")
 para1 = get_para_rg(ws.Range("A2:Z2"), "PIC_1 for click *.bmp" & usname, "N")
@@ -139,21 +139,21 @@ End If
 majjl.Add_Pic para3
 
 
-'Can not post ,µã»÷ Display logs µÄ ¡°¹Ø±Õ¡±
+'Can not post ,ç‚¹å‡» Display logs çš„ â€œå…³é—­â€
 para4 = get_para_rg(ws.Range("A2:Z2"), "PIC_4 for click *.bmp" & usname, "N")
 If mfso.FileExists(para4) = False Or Not (para4 Like "*.bmp") Then
 para4 = get_para_rg(ws.Range("A2:Z2"), "PIC_4 for click *.bmp" & usname, "Y")
 End If
 majjl.Add_Pic para4
-'Can not post ,µã»÷ Display logs µÄ ¡°¹Ø±Õ¡±
+'Can not post ,ç‚¹å‡» Display logs çš„ â€œå…³é—­â€
 
-' µãF12 ºó£¬Restart ´°¿Ú µãNO
+' ç‚¹F12 åï¼ŒRestart çª—å£ ç‚¹NO
 para5 = get_para_rg(ws.Range("A2:Z2"), "PIC_5 for click *.bmp" & usname, "N")
 If mfso.FileExists(para5) = False Or Not (para5 Like "*.bmp") Then
 para5 = get_para_rg(ws.Range("A2:Z2"), "PIC_5 for click *.bmp" & usname, "Y")
 End If
 majjl.Add_Pic para5
-' µãF12 ºó£¬Restart ´°¿Ú µãNO
+' ç‚¹F12 åï¼ŒRestart çª—å£ ç‚¹NO
 
 'Z:\24_Temp\PA_Logs\TOOLS\GoodsReceiptPurchaseOder\AI\PurchaseOrder_red.bmp
 
@@ -167,7 +167,7 @@ majjl.Add_Pic para6
 
 
 
-'¸ø°´¼ü¾«Áé¸³ÖµÍ¼Æ¬£¬check_ok ,post, prpo
+'ç»™æŒ‰é”®ç²¾çµèµ‹å€¼å›¾ç‰‡ï¼Œcheck_ok ,post, prpo
 
 
 
@@ -188,13 +188,13 @@ s_cannotpost = ""
     
     
     
-'ÌáÊ¾ĞÅÏ¢
+'æç¤ºä¿¡æ¯
 Application.StatusBar = "(" & i & "/" & i_last & ")" & str1 & str2 & str3 & str4 & str5
 If i - 5 > 1 Then
 ActiveWindow.ScrollRow = i - 5
 End If
  
-'ÌáÊ¾ĞÅÏ¢
+'æç¤ºä¿¡æ¯
 If InStr(str3, "HOLD") > 0 Then
 ws.Range("A" & i) = "HOLD"
 ElseIf InStr(str3, "RETURN") > 0 Then
@@ -261,7 +261,7 @@ Else
     
     If majjl.my_findwindow(windowname2) = 0 Then
         '=============================
-        'Èç¹û²»´æÔÚÖ¸¶¨MO-item £¬Ôò ÖØµÇ migo£¬²¢ ÖÃ TOBE_GR=>DOUBLE_CHECK
+        'å¦‚æœä¸å­˜åœ¨æŒ‡å®šMO-item ï¼Œåˆ™ é‡ç™» migoï¼Œå¹¶ ç½® TOBE_GR=>DOUBLE_CHECK
         
         
         
@@ -290,7 +290,7 @@ Else
         
     Else
          
-         'Èç¹ûµã»÷Ê§°Ü£¬Ôò ÖØµÇMigo£¬²¢ÖÃ
+         'å¦‚æœç‚¹å‡»å¤±è´¥ï¼Œåˆ™ é‡ç™»Migoï¼Œå¹¶ç½®
          xx = 0
          yy = 0
       ' b1 = MEMO_LClick_PIC(windowname2, m_PicCol.Item("LOGIN_OK.bmp").m_StdPicture, 10, 10)
@@ -304,7 +304,7 @@ Else
         
         delay 3000
        
-       '¶¯Ì¬µÈ´ı£¬´°¿ÚÏûÊ§  windowname2
+       'åŠ¨æ€ç­‰å¾…ï¼Œçª—å£æ¶ˆå¤±  windowname2
          For kk = 1 To 10
            If majjl.my_findwindow(windowname) > 0 Then
            Exit For
@@ -319,11 +319,11 @@ Else
         
         'Workbooks(THIS_WB_NAME).Save
         'Exit Sub
-        '1.¹Ø±Õ Display logs
+        '1.å…³é—­ Display logs
        delay 1000
        
        '  majjl.L_CLICK_PIC "Display logs", para4, 10, 10
-        '2.·¢ËÍF12
+        '2.å‘é€F12
        delay 1000
        delay 5000
         If majjl.my_findwindow(sap_wh) = 0 Then Exit Sub
@@ -363,7 +363,7 @@ Else
        
         
         
-        '3.Restart µãNo
+        '3.Restart ç‚¹No
          'majjl.L_CLICK_PIC "Restart", para5, 10, 10
        majjl.L_CLICK_WIN "Restart", 337, 167
        
@@ -383,7 +383,7 @@ Else
         
         
         End If
-       '¶¯Ì¬µÈ´ı£¬´°¿ÚÏûÊ§  windowname2
+       'åŠ¨æ€ç­‰å¾…ï¼Œçª—å£æ¶ˆå¤±  windowname2
        
      
          'myact
@@ -444,10 +444,10 @@ Application.WindowState = xlMaximized
 End Function
 
 Sub ma2()
-'1.·ÃÎÊ·şÎñÆ÷ Z:\24_Temp\PA_Logs\TOOLS\GoodsReceiptPurchaseOder\input\42_logistics
-'2.»ñÈ¡ÆäÖĞÈ«²¿µÄ receiving report*.xlsm
-'3.½«ÕâĞ©ÎÄ¼şÂ¼Èë¹¤×÷±í  receiving report_CN.xxxxx ²¢±È½ÏÆäĞÂ¾É
-'4.Èç¹ûĞÂ£¬»òÕßÊÇÓĞ¸üĞÂ£¬Ôò½«ÆäÖ»¶Á ½ûÓÃºêµÄ·½Ê½´ò¿ª£¬²¢¸´ÖÆ ¿ªÊ¼ÈÕÆÚ£¨×î½üÒ»ÖÜ£¬»òÕßÈıÌì£©µÄ DATAÒ²ÖĞÊÕ»õ¼ÇÂ¼ µ½ GRPO_DATA Ò³ÖĞ¡£
+'1.è®¿é—®æœåŠ¡å™¨ Z:\24_Temp\PA_Logs\TOOLS\GoodsReceiptPurchaseOder\input\42_logistics
+'2.è·å–å…¶ä¸­å…¨éƒ¨çš„ receiving report*.xlsm
+'3.å°†è¿™äº›æ–‡ä»¶å½•å…¥å·¥ä½œè¡¨  receiving report_CN.xxxxx å¹¶æ¯”è¾ƒå…¶æ–°æ—§
+'4.å¦‚æœæ–°ï¼Œæˆ–è€…æ˜¯æœ‰æ›´æ–°ï¼Œåˆ™å°†å…¶åªè¯» ç¦ç”¨å®çš„æ–¹å¼æ‰“å¼€ï¼Œå¹¶å¤åˆ¶ å¼€å§‹æ—¥æœŸï¼ˆæœ€è¿‘ä¸€å‘¨ï¼Œæˆ–è€…ä¸‰å¤©ï¼‰çš„ DATAä¹Ÿä¸­æ”¶è´§è®°å½• åˆ° GRPO_DATA é¡µä¸­ã€‚
 
 
 Dim str1  As String, str2 As String, str3 As String, str4 As String
@@ -550,7 +550,7 @@ Application.ScreenUpdating = False
 
 
      
-     'Ö»¶Á½ûºê·½·¨´ò¿ªµç×Ó±í¸ñ
+     'åªè¯»ç¦å®æ–¹æ³•æ‰“å¼€ç”µå­è¡¨æ ¼
      If wb_open_ONLY_READ(wb1, str1, only_new) Then
      
      'MsgBox ""
@@ -574,7 +574,7 @@ Application.ScreenUpdating = False
      
      ElseIf date2 = date1 Then
      
-     '¸´ÖÆ
+     'å¤åˆ¶
     ' MsgBox ""
      
      str4 = ws3.Cells(i5, 1)
@@ -645,8 +645,8 @@ Application.StatusBar = THIS_WB_NAME & "SAVED!"
 End Sub
 Private Function wb_open_ONLY_READ(wb As Workbook, flfp As String, Optional b_n As Boolean = True) As Boolean
 On Error GoTo Error1
-'Ö»¶Á½ûÓÃºê·½Ê½´ò¿ª¹¤×÷²¾
-'Èç¹ûÍâÃæÓĞÁË»¹Ò»ÑùÔò²»×öÈÎºÎ²Ù×÷£¬Èç¹ûÍâÃæÃ»ÓĞ£¬¸´ÖÆµ½ÍâÃæ£¬Èç¹ûÍâÃæÓĞµ¥ÊÇ²»Ò»Ñù£¬±¸·İÍâÃæµÄ£¬²¢¸´ÖÆ
+'åªè¯»ç¦ç”¨å®æ–¹å¼æ‰“å¼€å·¥ä½œç°¿
+'å¦‚æœå¤–é¢æœ‰äº†è¿˜ä¸€æ ·åˆ™ä¸åšä»»ä½•æ“ä½œï¼Œå¦‚æœå¤–é¢æ²¡æœ‰ï¼Œå¤åˆ¶åˆ°å¤–é¢ï¼Œå¦‚æœå¤–é¢æœ‰å•æ˜¯ä¸ä¸€æ ·ï¼Œå¤‡ä»½å¤–é¢çš„ï¼Œå¹¶å¤åˆ¶
 
 Dim str1 As String, str2 As String, str3 As String
 str1 = P_SPLIT(flfp, "\", -1)
@@ -722,7 +722,7 @@ End Function
 Private Function init_para() As Boolean
 On Error GoTo Errhand
 init_para = False
-'1.³õÊ¼»¯²ÎÊı,½¨Á¢Ó¦¸ÃÓĞµÄ¹¤×÷±í
+'1.åˆå§‹åŒ–å‚æ•°,å»ºç«‹åº”è¯¥æœ‰çš„å·¥ä½œè¡¨
 Dim str1  As String, str2 As String, str3 As String, str4 As String
 Dim para1 As String, para2 As String, para3 As String, para4 As String
 Dim i1 As Integer, i2 As Integer, i3 As Integer, i4 As Integer
@@ -804,8 +804,8 @@ my_sendkeys = False
 End Function
 
 
-'VBAºêÊ¹ÓÃÁË°ó¶¨µ½ÎÄ±¾¸´ÖÆµ½¼ôÌù°å¡£
-'×÷ÕßJustin Kay£¬8/15/2014
+'VBAå®ä½¿ç”¨äº†ç»‘å®šåˆ°æ–‡æœ¬å¤åˆ¶åˆ°å‰ªè´´æ¿ã€‚
+'ä½œè€…Justin Kayï¼Œ8/15/2014
 '  ""
  
  
@@ -835,10 +835,10 @@ End Sub
 
 
 Sub get_stock_data()
-'1.·ÃÎÊ·şÎñÆ÷ Z:\24_Temp\PA_Logs\TOOLS\GoodsReceiptPurchaseOder\input\42_logistics
-'2.»ñÈ¡ÆäÖĞÈ«²¿µÄ receiving report*.xlsm
-'3.½«ÕâĞ©ÎÄ¼şÂ¼Èë¹¤×÷±í  receiving report_CN.xxxxx ²¢±È½ÏÆäĞÂ¾É
-'4.Èç¹ûĞÂ£¬»òÕßÊÇÓĞ¸üĞÂ£¬Ôò½«ÆäÖ»¶Á ½ûÓÃºêµÄ·½Ê½´ò¿ª£¬²¢¸´ÖÆ ¿ªÊ¼ÈÕÆÚ£¨×î½üÒ»ÖÜ£¬»òÕßÈıÌì£©µÄ DATAÒ²ÖĞÊÕ»õ¼ÇÂ¼ µ½ GRPO_DATA Ò³ÖĞ¡£
+'1.è®¿é—®æœåŠ¡å™¨ Z:\24_Temp\PA_Logs\TOOLS\GoodsReceiptPurchaseOder\input\42_logistics
+'2.è·å–å…¶ä¸­å…¨éƒ¨çš„ receiving report*.xlsm
+'3.å°†è¿™äº›æ–‡ä»¶å½•å…¥å·¥ä½œè¡¨  receiving report_CN.xxxxx å¹¶æ¯”è¾ƒå…¶æ–°æ—§
+'4.å¦‚æœæ–°ï¼Œæˆ–è€…æ˜¯æœ‰æ›´æ–°ï¼Œåˆ™å°†å…¶åªè¯» ç¦ç”¨å®çš„æ–¹å¼æ‰“å¼€ï¼Œå¹¶å¤åˆ¶ å¼€å§‹æ—¥æœŸï¼ˆæœ€è¿‘ä¸€å‘¨ï¼Œæˆ–è€…ä¸‰å¤©ï¼‰çš„ DATAä¹Ÿä¸­æ”¶è´§è®°å½• åˆ° GRPO_DATA é¡µä¸­ã€‚
 
 Dim s_datelast As String
 
@@ -867,12 +867,12 @@ Set ws2 = get_ws(Workbooks(THIS_WB_NAME), "STOCK_DATA")
 Dim date1 As Date
 Dim date2 As Date
 
-'±íÍ·
+'è¡¨å¤´
 ws2.Range("A3") = "SN": ws2.Range("B3") = "PO": ws2.Range("C3") = "ProjectNo": ws2.Range("D3") = "suppliers": ws2.Range("E3") = "POgroup": ws2.Range("F3") = "SupplierCode": ws2.Range("G3") = "Item"
 ws2.Range("H3") = "MaterialID": ws2.Range("I3") = "MaterialDesc": ws2.Range("J3") = "RequirementNo": ws2.Range("K3") = "POQty": ws2.Range("L3") = "RecdQty": ws2.Range("M3") = "OpenQuant": ws2.Range("N3") = "UOM"
 ws2.Range("O3") = "Binlocation": ws2.Range("P3") = "Duedate": ws2.Range("Q3") = "Entering": ws2.Range("R3") = "Tag"
 ws2.Range("S3") = "FROM"
-'±íÍ·
+'è¡¨å¤´
 
 
 
@@ -943,7 +943,7 @@ Application.ScreenUpdating = False
 
 
      
-     'Ö»¶Á½ûºê·½·¨´ò¿ªµç×Ó±í¸ñ
+     'åªè¯»ç¦å®æ–¹æ³•æ‰“å¼€ç”µå­è¡¨æ ¼
      only_new = False
      
      If wb_open_ONLY_READ(wb1, str1, only_new) Then
@@ -959,24 +959,24 @@ Application.ScreenUpdating = False
      'str4 = ws3.Range("H" & i4)
      'str5 = Trim(ws3.Range("O" & i4))
      'str6 = CStr(ws3.Range("H" & i4).Interior.Color)
-     '²éÕÒÉ¾³ı
+     'æŸ¥æ‰¾åˆ é™¤
      'With ws2.Columns(8)
     'Set c = .Find(str4, LookIn:=xlValues)
     'If Not c Is Nothing Then
     '    ws2.Rows(c.Row).Delete
     'End If
     ' End With
-     '²éÕÒÉ¾³ı
+     'æŸ¥æ‰¾åˆ é™¤
      'If str6 = "16777215" And Len(str5) > 0 Then
-     '°×É«,ÇÒÓĞ¿âÎ»£¬Ìí¼Ó
+     'ç™½è‰²,ä¸”æœ‰åº“ä½ï¼Œæ·»åŠ 
       'i6 = ws2.UsedRange.Rows(ws2.UsedRange.Rows.Count).Row + 1
       ' ws3.Range("A" & i4 & ":R" & i4).Copy ws2.Range("A" & i6)
     ' Else
-     'ÆäËû
+     'å…¶ä»–
      'End If
      'Next
      
-     '1.×Ü±íÖĞÉ¾³ı Í¬Ãû±íµ¥
+     '1.æ€»è¡¨ä¸­åˆ é™¤ åŒåè¡¨å•
      
      del_inws ws2, "S", "4", wb1.Name
      
@@ -1011,7 +1011,7 @@ Application.ScreenUpdating = False
          
        
 
-     '2.ws3ÖĞÉ¾³ıÂÌÉ«£¬ºÍÎŞ¿âÎ»µÄĞĞ£¬ÓàÏÂµÄĞĞ¸´ÖÆÈë ×Ü±íÄ©Î²
+     '2.ws3ä¸­åˆ é™¤ç»¿è‰²ï¼Œå’Œæ— åº“ä½çš„è¡Œï¼Œä½™ä¸‹çš„è¡Œå¤åˆ¶å…¥ æ€»è¡¨æœ«å°¾
      
      
      
@@ -1054,7 +1054,7 @@ Private Function del_inws(ws2 As Worksheet, s_col As String, s_row As String, s_
     i2_last = ws2.UsedRange.Rows(ws2.UsedRange.Rows.Count).Row
     If i2_last <= CLng(s_row) Then Exit Function
     
-    '²éÑ¯Ò»ÏÂ s_v Ã»ÓĞÔò½áÊø£¬ÓĞÔò¼ÇÂ¼ÎªÆğÊ¼ĞĞ
+    'æŸ¥è¯¢ä¸€ä¸‹ s_v æ²¡æœ‰åˆ™ç»“æŸï¼Œæœ‰åˆ™è®°å½•ä¸ºèµ·å§‹è¡Œ
  
     With ws2.Columns(s_col)
 
@@ -1071,7 +1071,7 @@ Private Function del_inws(ws2 As Worksheet, s_col As String, s_row As String, s_
     End With
     
     
-    '²éÑ¯Ò»ÏÂ s_v Ã»ÓĞÔò½áÊø£¬ÓĞÔò¼ÇÂ¼ÎªÆğÊ¼ĞĞ
+    'æŸ¥è¯¢ä¸€ä¸‹ s_v æ²¡æœ‰åˆ™ç»“æŸï¼Œæœ‰åˆ™è®°å½•ä¸ºèµ·å§‹è¡Œ
     
     
     
@@ -1084,12 +1084,12 @@ Private Function del_inws(ws2 As Worksheet, s_col As String, s_row As String, s_
      ws2.AutoFilterMode = False
      
      DoEvents
-     '²¿·ÖxlsÉ¾³ıÒ»´Î²¢ÄÜÉ¾¸É¾»
+     'éƒ¨åˆ†xlsåˆ é™¤ä¸€æ¬¡å¹¶èƒ½åˆ å¹²å‡€
      
        i2_last = ws2.UsedRange.Rows(ws2.UsedRange.Rows.Count).Row
     If i2_last <= CLng(s_row) Then Exit Function
     
-    '²éÑ¯Ò»ÏÂ s_v Ã»ÓĞÔò½áÊø£¬ÓĞÔò¼ÇÂ¼ÎªÆğÊ¼ĞĞ
+    'æŸ¥è¯¢ä¸€ä¸‹ s_v æ²¡æœ‰åˆ™ç»“æŸï¼Œæœ‰åˆ™è®°å½•ä¸ºèµ·å§‹è¡Œ
  
     With ws2.Columns(s_col)
 
@@ -1106,7 +1106,7 @@ Private Function del_inws(ws2 As Worksheet, s_col As String, s_row As String, s_
     End With
     
     
-    '²éÑ¯Ò»ÏÂ s_v Ã»ÓĞÔò½áÊø£¬ÓĞÔò¼ÇÂ¼ÎªÆğÊ¼ĞĞ
+    'æŸ¥è¯¢ä¸€ä¸‹ s_v æ²¡æœ‰åˆ™ç»“æŸï¼Œæœ‰åˆ™è®°å½•ä¸ºèµ·å§‹è¡Œ
     
     
     
@@ -1143,10 +1143,10 @@ Private Function del_inws_rgb(ws2 As Worksheet, s_col As String, s_row As String
 End Function
 
 Sub get_print_lable()
-'1.·ÃÎÊ·şÎñÆ÷ Z:\24_Temp\PA_Logs\TOOLS\GoodsReceiptPurchaseOder\input\42_logistics
-'2.»ñÈ¡ÆäÖĞÈ«²¿µÄ receiving report*.xlsm
-'3.½«ÕâĞ©ÎÄ¼şÂ¼Èë¹¤×÷±í  receiving report_CN.xxxxx ²¢±È½ÏÆäĞÂ¾É
-'4.Èç¹ûĞÂ£¬»òÕßÊÇÓĞ¸üĞÂ£¬Ôò½«ÆäÖ»¶Á ½ûÓÃºêµÄ·½Ê½´ò¿ª£¬²¢¸´ÖÆ ¿ªÊ¼ÈÕÆÚ£¨×î½üÒ»ÖÜ£¬»òÕßÈıÌì£©µÄ DATAÒ²ÖĞÊÕ»õ¼ÇÂ¼ µ½ GRPO_DATA Ò³ÖĞ¡£
+'1.è®¿é—®æœåŠ¡å™¨ Z:\24_Temp\PA_Logs\TOOLS\GoodsReceiptPurchaseOder\input\42_logistics
+'2.è·å–å…¶ä¸­å…¨éƒ¨çš„ receiving report*.xlsm
+'3.å°†è¿™äº›æ–‡ä»¶å½•å…¥å·¥ä½œè¡¨  receiving report_CN.xxxxx å¹¶æ¯”è¾ƒå…¶æ–°æ—§
+'4.å¦‚æœæ–°ï¼Œæˆ–è€…æ˜¯æœ‰æ›´æ–°ï¼Œåˆ™å°†å…¶åªè¯» ç¦ç”¨å®çš„æ–¹å¼æ‰“å¼€ï¼Œå¹¶å¤åˆ¶ å¼€å§‹æ—¥æœŸï¼ˆæœ€è¿‘ä¸€å‘¨ï¼Œæˆ–è€…ä¸‰å¤©ï¼‰çš„ DATAä¹Ÿä¸­æ”¶è´§è®°å½• åˆ° GRPO_DATA é¡µä¸­ã€‚
 
 
 Dim str1  As String, str2 As String, str3 As String, str4 As String
@@ -1180,7 +1180,7 @@ date1 = CDate(InputBox("Input date start YYYY-MM-DD", "", Format(now(), "YYYY-MM
 
 
 
-'±íÍ·
+'è¡¨å¤´
 'SN  MaterialID                          Type    PickingListNumber   Express tracking number Comments
 
 
@@ -1189,7 +1189,7 @@ ws2.Range("H3") = "UOM Location": ws2.Range("I3") = "CaseNo": ws2.Range("J3") = 
 'ws2.Range("O3") = "Binlocation": ws2.Range("P3") = "Duedate": ws2.Range("Q3") = "Entering": ws2.Range("R3") = "Tag"
 ws2.Range("S3") = "FROM"
 
-'±íÍ·
+'è¡¨å¤´
 
 
 
@@ -1229,7 +1229,7 @@ Application.ScreenUpdating = False
 
 
      
-     'Ö»¶Á½ûºê·½·¨´ò¿ªµç×Ó±í¸ñ
+     'åªè¯»ç¦å®æ–¹æ³•æ‰“å¼€ç”µå­è¡¨æ ¼
      only_new = True
      
      If wb_open_ONLY_READ(wb1, str1, only_new) Then
@@ -1245,24 +1245,24 @@ Application.ScreenUpdating = False
      'str4 = ws3.Range("H" & i4)
      'str5 = Trim(ws3.Range("O" & i4))
      'str6 = CStr(ws3.Range("H" & i4).Interior.Color)
-     '²éÕÒÉ¾³ı
+     'æŸ¥æ‰¾åˆ é™¤
      'With ws2.Columns(8)
     'Set c = .Find(str4, LookIn:=xlValues)
     'If Not c Is Nothing Then
     '    ws2.Rows(c.Row).Delete
     'End If
     ' End With
-     '²éÕÒÉ¾³ı
+     'æŸ¥æ‰¾åˆ é™¤
      'If str6 = "16777215" And Len(str5) > 0 Then
-     '°×É«,ÇÒÓĞ¿âÎ»£¬Ìí¼Ó
+     'ç™½è‰²,ä¸”æœ‰åº“ä½ï¼Œæ·»åŠ 
       'i6 = ws2.UsedRange.Rows(ws2.UsedRange.Rows.Count).Row + 1
       ' ws3.Range("A" & i4 & ":R" & i4).Copy ws2.Range("A" & i6)
     ' Else
-     'ÆäËû
+     'å…¶ä»–
      'End If
      'Next
      
-     '1.×Ü±íÖĞÉ¾³ı Í¬Ãû±íµ¥
+     '1.æ€»è¡¨ä¸­åˆ é™¤ åŒåè¡¨å•
      
      del_inws ws2, "S", "4", wb1.Name
      
@@ -1320,7 +1320,7 @@ Application.ScreenUpdating = False
          
        
 
-     '2.ws3ÖĞÉ¾³ıÂÌÉ«£¬ºÍÎŞ¿âÎ»µÄĞĞ£¬ÓàÏÂµÄĞĞ¸´ÖÆÈë ×Ü±íÄ©Î²
+     '2.ws3ä¸­åˆ é™¤ç»¿è‰²ï¼Œå’Œæ— åº“ä½çš„è¡Œï¼Œä½™ä¸‹çš„è¡Œå¤åˆ¶å…¥ æ€»è¡¨æœ«å°¾
      
      
      
